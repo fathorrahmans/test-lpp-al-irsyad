@@ -1,18 +1,17 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#siswaAddModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-student-modal">
     Tambah Siswa
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="siswaAddModal" tabindex="-1" aria-labelledby="siswaAddModalLabel" aria-hidden="true">
+<div class="modal fade" id="add-student-modal" tabindex="-1" aria-labelledby="siswaAddModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="siswaAddModalLabel">Tambah Siswa Baru</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('siswa.store') }}" method="POST">
-                @csrf
+            <form id="add-student-form">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
@@ -42,7 +41,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-primary" id="btn-save" disabled>
+                        <span id="btn-text">Simpan</span>
+                        <span id="btn-spinner" class="spinner-border spinner-border-sm mx-4" role="status"
+                            aria-hidden="true" style="display: none;"></span></button>
                 </div>
             </form>
         </div>

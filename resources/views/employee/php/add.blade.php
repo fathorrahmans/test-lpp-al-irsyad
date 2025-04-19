@@ -1,17 +1,18 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-employee-modal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pegawaiModal">
     Tambah Pegawai
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="add-employee-modal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+<div class="modal fade" id="pegawaiModal" tabindex="-1" aria-labelledby="pegawaiModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="addEmployeeModalLabel">Tambah Pegawai Baru</h1>
+                <h1 class="modal-title fs-5" id="pegawaiModalLabel">Tambah Pegawai Baru</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id='add-employee-form'>
+            <form action="{{ route('pegawai.store') }}" method="POST">
+                @csrf
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
@@ -40,10 +41,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary" id="btn-save" disabled>
-                        <span id="btn-text">Simpan</span>
-                        <span id="btn-spinner" class="spinner-border spinner-border-sm mx-4" role="status"
-                            aria-hidden="true" style="display: none;"></span></button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

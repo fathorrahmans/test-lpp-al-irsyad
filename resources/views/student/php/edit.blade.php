@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="edit-student-modal" tabindex="-1" aria-labelledby="siswaModalEditLabel" aria-hidden="true">
+<div class="modal fade" id="siswaModalEdit" tabindex="-1" aria-labelledby="siswaModalEditLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +7,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form id="edit-student-form">
+            <form id="form-edit-siswa" method="POST">
+                @csrf
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
@@ -37,11 +38,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary" id="btn-update" disabled>
-                        <span id="btn-text">Perbarui</span>
-                        <span id="btn-spinner" class="spinner-border spinner-border-sm mx-4" role="status"
-                            aria-hidden="true" style="display: none;"></span>
-                    </button>
+                    <button type="submit" class="btn btn-primary">Perbarui</button>
                 </div>
             </form>
         </div>

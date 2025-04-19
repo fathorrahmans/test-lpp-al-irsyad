@@ -1,27 +1,33 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#siswaAddModal">
+    Tambah Siswa
+</button>
+
 <!-- Modal -->
-<div class="modal fade" id="edit-student-modal" tabindex="-1" aria-labelledby="siswaModalEditLabel" aria-hidden="true">
+<div class="modal fade" id="siswaAddModal" tabindex="-1" aria-labelledby="siswaAddModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="siswaModalEditLabel">Edit Siswa</h1>
+                <h1 class="modal-title fs-5" id="siswaAddModalLabel">Tambah Siswa Baru</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
-            <form id="edit-student-form">
+            <form action="{{ route('siswa.store') }}" method="POST">
+                @csrf
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required>
+                        <input type="text" class="form-control" id="nama" name="nama"
+                            placeholder="Masukkan Nama" required>
                     </div>
-
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="Masukkan Email" required>
                     </div>
-
                     <div class="mb-3">
                         <label for="kelas" class="form-label">Kelas</label>
-                        <select class="form-select" id="kelas" name="kelas" required>
+                        <select class="form-select" id="kelas" name="kelas" aria-label="Default select example"
+                            required>
                             <option value="">-- Pilih Kelas --</option>
                             <option value="x rpl 1">X RPL 1</option>
                             <option value="x rpl 2">X RPL 2</option>
@@ -34,14 +40,9 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary" id="btn-update" disabled>
-                        <span id="btn-text">Perbarui</span>
-                        <span id="btn-spinner" class="spinner-border spinner-border-sm mx-4" role="status"
-                            aria-hidden="true" style="display: none;"></span>
-                    </button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

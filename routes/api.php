@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('pegawai', EmployeeController::class);
+Route::post('/pegawai/kirim-email/{id}', [EmployeeController::class, 'sendEmail']);
 Route::resource('siswa', StudentController::class);

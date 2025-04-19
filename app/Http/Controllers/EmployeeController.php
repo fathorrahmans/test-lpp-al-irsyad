@@ -18,7 +18,13 @@ class EmployeeController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Berhasil Mendapatkan Seluruh Pegawai',
-                'data' => $employees->items()
+                'data' => $employees->items(),
+                'pagination' => [
+                    'current_page' => $employees->currentPage(),
+                    'per_page' => $employees->perPage(),
+                    'total_item' => $employees->total(),
+                    'last_page' => $employees->lastPage()
+                ]
             ], 200);
         }
 
@@ -99,10 +105,17 @@ class EmployeeController extends Controller
     }
 
     // Send Email Employee
-    public function sendEmail($id)
+    public function sendEmail(Request $request, $id)
     {
         $employee = Employee::findOrFail($id);
         Mail::to($employee->email)->send(new EmployeeMail($employee));
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Berhasil Kirim Email Pegawai '
+            ], 200);
+        }
 
         return redirect()->route('pegawai.index');
     }

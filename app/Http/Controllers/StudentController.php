@@ -16,7 +16,13 @@ class StudentController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Berhasil Mendapatkan Seluruh Siswa',
-                'data' => $students->items()
+                'data' => $students->items(),
+                'pagination' => [
+                    'current_page' => $students->currentPage(),
+                    'per_page' => $students->perPage(),
+                    'total_item' => $students->total(),
+                    'last_page' => $students->lastPage()
+                ]
             ], 200);
         }
 

@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="pegawaiModalEdit" tabindex="-1" aria-labelledby="pegawaiModalEditLabel" aria-hidden="true">
+<div class="modal fade" id="edit-employee-modal" tabindex="-1" aria-labelledby="pegawaiModalEditLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,8 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form id="form-edit-pegawai" method="POST">
-                @csrf
+            <form id="edit-employee-form">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
@@ -37,7 +36,12 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Perbarui</button>
+                    <button type="button" class="btn btn-primary" id="btn-update" disabled>
+                        <span id="btn-text">Perbarui</span>
+                        <span id="btn-spinner" class="spinner-border spinner-border-sm mx-4" role="status"
+                            aria-hidden="true" style="display: none;"></span>
+                    </button>
+
                 </div>
             </form>
         </div>
